@@ -4,11 +4,34 @@
     <title>Results | ScamShield AI</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            padding: 40px;
-        }
+        .navbar {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    background: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 40px;
+}
 
         .container {
             max-width: 800px;
@@ -40,14 +63,41 @@
 </head>
 
 <body>
+    <nav class="navbar">
+    <div class="logo">🛡️ ScamShield AI</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="#">GitHub</a>
+    </div>
+</nav>
     <div class="container">
         <h1>🛡️ ScamShield AI Results</h1>
 
-        <div class="risk">Risk Level: {{ risk }}</div>
-        <h2>Risk Score: {{ score }}/100</h2>
+{% if risk == "High" %}
+    <div class="risk" style="color:red;">
+        🔴 Risk Level: {{ risk }}
+    </div>
+{% elif risk == "Medium" %}
+    <div class="risk" style="color:orange;">
+        🟡 Risk Level: {{ risk }}
+    </div>
+{% else %}
+    <div class="risk" style="color:green;">
+        🟢 Risk Level: {{ risk }}
+    </div>
+{% endif %}        <h2>Risk Score: {{ score }}/100</h2>
         <h3>Submitted Message:</h3>
         <div class="message-box">{{ message }}</div>
+<h3>Possible Scam Categories:</h3>
 
+<ul>
+{% for category in categories %}
+    <li>{{ category }}</li>
+{% empty %}
+    <li>No obvious scam category detected.</li>
+{% endfor %}
+</ul>
         <h3>Reasons Flagged:</h3>
         <ul>
             {% for reason in reasons %}
