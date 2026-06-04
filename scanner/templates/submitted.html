@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results | ScamShield AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,.1);
+        }
+
+        .risk {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .message-box {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🛡️ ScamShield AI Results</h1>
+
+        <div class="risk">Risk Level: {{ risk }}</div>
+        <h2>Risk Score: {{ score }}/100</h2>
+        <h3>Submitted Message:</h3>
+        <div class="message-box">{{ message }}</div>
+
+        <h3>Reasons Flagged:</h3>
+        <ul>
+            {% for reason in reasons %}
+                <li>{{ reason }}</li>
+            {% empty %}
+                <li>No major scam indicators detected.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/">Analyze another message</a>
+    </div>
+</body>
+</html>

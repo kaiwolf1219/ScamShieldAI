@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ScamShield AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,.1);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🛡️ ScamShield AI</h1>
+
+        <p>
+            Paste a suspicious email, text message, social media DM,
+            or scam message below.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <textarea
+                name="message"
+                rows="12"
+                placeholder="Paste suspicious message here..."
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit">Analyze Message</button>
+        </form>
+    </div>
+</body>
+</html>
