@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ScamShield AI</title>
+    <title>About | ScamShield AI</title>
 
     <style>
         body {
@@ -42,19 +42,8 @@
             box-shadow: 0 0 20px rgba(0,0,0,.1);
         }
 
-        textarea {
-            width: 100%;
-            padding: 15px;
-            font-size: 16px;
-            margin-top: 15px;
-        }
-
-        button {
-            padding: 12px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 8px;
-            border: none;
+        li {
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -71,26 +60,31 @@
     </nav>
 
     <div class="container">
-        <h1>🛡️ ScamShield AI</h1>
+        <h1>About ScamShield AI</h1>
 
         <p>
-            Paste a suspicious email, text message, social media DM,
-            or scam message below.
+            ScamShield AI was built by Kai Ledbetter as a project for the
+            SANS Institute Find Evil Hackathon.
         </p>
 
-        <form method="post">
-            {% csrf_token %}
+        <p>
+            The project helps users identify suspicious messages, scam emails,
+            phishing attempts, suspicious links, and possible fraud indicators.
+        </p>
 
-            <textarea
-                name="message"
-                rows="12"
-                placeholder="Paste suspicious message here..."
-            ></textarea>
+        <h2>Current Features</h2>
 
-            <br><br>
+        <ul>
+            <li>Keyword-based scam detection</li>
+            <li>Suspicious URL detection</li>
+            <li>Phone number detection</li>
+            <li>Email address detection</li>
+            <li>Risk scoring from 0–100</li>
+            <li>High, Medium, and Low risk classification</li>
+            <li>Possible scam category detection</li>
+        </ul>
 
-            <button type="submit">Analyze Message</button>
-        </form>
+        <a href="/">Back to Scanner</a>
     </div>
 </body>
 </html>

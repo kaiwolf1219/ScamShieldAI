@@ -1,8 +1,6 @@
 from django.shortcuts import render
 import re
 
-from scamshield.scamshield import urls
-
 
 def home(request):
     if request.method == "POST":
@@ -31,10 +29,10 @@ def home(request):
                 score += 15
 
         urls = re.findall(r"https?://\S+|www\.\S+", message)
-        
+
         for url in urls:
-         reasons.append(f"Detected URL: {url}")
-        score += 25
+            reasons.append(f"Detected URL: {url}")
+            score += 25
 
         phone_numbers = re.findall(
             r"(\+?\d{1,2}[-.\s]?)?(\(?\d{3}\)?[-.\s]?)\d{3}[-.\s]?\d{4}",
@@ -49,9 +47,10 @@ def home(request):
             r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b",
             message,
         )
+
         for email in emails:
-         reasons.append(f"Detected email: {email}")
-        score += 10
+            reasons.append(f"Detected email: {email}")
+            score += 10
 
         if "bank" in lower_message:
             categories.append("🏦 Banking Scam")
@@ -88,3 +87,7 @@ def home(request):
         )
 
     return render(request, "index.html")
+
+
+def about(request):
+    return render(request, "about.html")
